@@ -1,5 +1,8 @@
 import 'dotenv/config';
-import { drizzle } from 'drizzle-orm/node-postgres';
+
+
+import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
 import {usersTable} from "../models/user.model.js";
 
 const databaseUrl = process.env.DATABASE_URL;
@@ -9,7 +12,9 @@ if (!databaseUrl) {
     throw new Error('DATABASE_URL is not defined');
 }
 
-export const db = drizzle(databaseUrl, {
+const sql = neon(databaseUrl);
+
+export const db = drizzle({client: sql}, {
     schema: {
         user: usersTable
     }
