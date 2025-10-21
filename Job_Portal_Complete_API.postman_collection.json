@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "job-portal-complete-api",
+		"name": "Meet AI MVP - Complete API Collection",
+		"description": "Complete API collection with Authentication, User Management, Recruiter, and Job Seeker endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123!\",\n  \"userType\": \"job_seeker\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/register",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "register"]
+						}
+					}
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"otp\": 123456\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/verify-otp",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "verify-otp"]
+						}
+					}
+				},
+				{
+					"name": "Resend OTP",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/resend-otp",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "resend-otp"]
+						}
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/login",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "login"]
+						}
+					}
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/forgot-password",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "forgot-password"]
+						}
+					}
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john.doe@example.com\",\n  \"otp\": 123456,\n  \"newPassword\": \"NewSecurePass123!\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/reset-password",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "reset-password"]
+						}
+					}
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/logout",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "auth", "logout"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Recruiter - Company",
+			"item": [
+				{
+					"name": "Create Company",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyName\": \"Tech Corp\",\n  \"companyEmail\": \"contact@techcorp.com\",\n  \"companyPhone\": \"+1234567890\",\n  \"website\": \"https://techcorp.com\",\n  \"industry\": \"Technology\",\n  \"location\": \"San Francisco, CA\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/company",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "company"]
+						}
+					}
+				},
+				{
+					"name": "Get My Company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/company",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "company"]
+						}
+					}
+				},
+				{
+					"name": "Update Company",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"location\": \"New York, NY\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/company",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "company"]
+						}
+					}
+				},
+				{
+					"name": "Delete Company",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/company",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "company"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Recruiter - Jobs",
+			"item": [
+				{
+					"name": "Create Job",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"companyId\": 1,\n  \"title\": \"Senior Full Stack Developer\",\n  \"description\": \"We are looking for an experienced developer...\",\n  \"requirements\": \"5+ years experience with React and Node.js\",\n  \"jobType\": \"full_time\",\n  \"locationType\": \"remote\",\n  \"location\": \"Remote - USA\",\n  \"deadline\": \"2025-12-31\",\n  \"status\": \"open\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs"]
+						}
+					}
+				},
+				{
+					"name": "Get My Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs?page=1&limit=10&status=open",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"},
+								{"key": "status", "value": "open", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Job by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Job",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"closed\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Job",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs", "1"]
+						}
+					}
+				},
+				{
+					"name": "Add Skill to Job",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"skillName\": \"React\",\n  \"isRequired\": true\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs/1/skills",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs", "1", "skills"]
+						}
+					}
+				},
+				{
+					"name": "Get Job Skills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs/1/skills",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs", "1", "skills"]
+						}
+					}
+				},
+				{
+					"name": "Delete Job Skill",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs/1/skills/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs", "1", "skills", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Recruiter - Applications",
+			"item": [
+				{
+					"name": "Get Job Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/jobs/1/applications?page=1&limit=10&status=pending",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "jobs", "1", "applications"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"},
+								{"key": "status", "value": "pending", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get All My Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/applications?page=1&limit=10",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "applications"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Application Status",
+					"request": {
+						"method": "PATCH",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"shortlisted\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/recruiter/applications/1/status",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "recruiter", "applications", "1", "status"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Job Seeker - Profile",
+			"item": [
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"+1234567890\",\n  \"location\": \"New York, NY\",\n  \"bio\": \"Experienced full-stack developer...\",\n  \"yearsOfExperience\": 5\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/profile",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "profile"]
+						}
+					}
+				},
+				{
+					"name": "Get My Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/profile",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "profile"]
+						}
+					}
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"yearsOfExperience\": 6\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/profile",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "profile"]
+						}
+					}
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/profile",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "profile"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Job Seeker - Skills",
+			"item": [
+				{
+					"name": "Add Skill",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"skillName\": \"React\",\n  \"proficiencyLevel\": \"Advanced\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/skills",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "skills"]
+						}
+					}
+				},
+				{
+					"name": "Get My Skills",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/skills",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "skills"]
+						}
+					}
+				},
+				{
+					"name": "Update Skill",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"proficiencyLevel\": \"Expert\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/skills/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "skills", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Skill",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/skills/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "skills", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Job Seeker - Job Discovery",
+			"item": [
+				{
+					"name": "Search Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/jobs/search?search=developer&location=New York&jobType=full_time&locationType=remote&skills=React,Node.js&page=1&limit=10",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "jobs", "search"],
+							"query": [
+								{"key": "search", "value": "developer", "disabled": true},
+								{"key": "location", "value": "New York", "disabled": true},
+								{"key": "jobType", "value": "full_time", "disabled": true},
+								{"key": "locationType", "value": "remote", "disabled": true},
+								{"key": "skills", "value": "React,Node.js", "disabled": true},
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Recommended Jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/jobs/recommended?page=1&limit=10",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "jobs", "recommended"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Job Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/jobs/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "jobs", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Job Seeker - Applications",
+			"item": [
+				{
+					"name": "Apply to Job",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/jobs/1/apply",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "jobs", "1", "apply"]
+						}
+					}
+				},
+				{
+					"name": "Get My Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/applications?page=1&limit=10&status=pending",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "applications"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "limit", "value": "10"},
+								{"key": "status", "value": "pending", "disabled": true}
+							]
+						}
+					}
+				},
+				{
+					"name": "Withdraw Application",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/job-seeker/applications/1",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "job-seeker", "applications", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/profile",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "users", "profile"]
+						}
+					}
+				},
+				{
+					"name": "Update User Profile",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"John Updated\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/profile",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "users", "profile"]
+						}
+					}
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [{"key": "Content-Type", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currentPassword\": \"OldPass123!\",\n  \"newPassword\": \"NewPass123!\"\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/change-password",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "users", "change-password"]
+						}
+					}
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/account",
+							"host": ["{{BASE_URL}}"],
+							"path": ["api", "users", "account"]
+						}
+					}
+				},
+              {
+                "name": "Admin - Get All Users",
+                "request": {
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "{{BASE_URL}}/api/users/admin/users?page=1&limit=10",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "users", "admin", "users"],
+                    "query": [
+                      {"key": "page", "value": "1"},
+                      {"key": "limit", "value": "10"}
+                    ]
+                  }
+                }
+              },
+              {
+                "name": "Admin - Get User by ID",
+                "request": {
+                  "method": "GET",
+                  "header": [],
+                  "url": {
+                    "raw": "{{BASE_URL}}/api/users/admin/users/1",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "users", "admin", "users", "1"]
+                  }
+                }
+              },
+              {
+                "name": "Admin - Delete User",
+                "request": {
+                  "method": "DELETE",
+                  "header": [],
+                  "url": {
+                    "raw": "{{BASE_URL}}/api/users/admin/users/1",
+                    "host": ["{{BASE_URL}}"],
+                    "path": ["api", "users", "admin", "users", "1"]
+                  }
+                }
+              }
+			]
+		}
+
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
+
