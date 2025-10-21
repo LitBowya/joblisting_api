@@ -17,7 +17,7 @@ export const sendRegistrationEmail = async (to, name, otp) => {
     `;
 
     const mailOptions = {
-        from: `"MeetAI" <${process.env.GMAIL_USER}>`,
+        from: "MeetAI <no-reply@resend.dev>",
         to,
         subject: "Verify Your Email - MeetAI",
         html: emailTemplate({ title, message}),
@@ -47,7 +47,7 @@ export const sendForgotPasswordEmail = async (to, name, otp) => {
     `;
 
     const mailOptions = {
-        from: `"MeetAI" <${process.env.GMAIL_USER}>`,
+        from: "MeetAI <no-reply@resend.dev>",
         to,
         subject: "Reset Your Password - MeetAI",
         html: emailTemplate({ title, message, }),
@@ -75,7 +75,7 @@ export const sendResetPasswordEmail = async (to, name) => {
 
 
     const mailOptions = {
-        from: `"MeetAI" <${process.env.GMAIL_USER}>`,
+        from: "MeetAI <no-reply@resend.dev>",
         to,
         subject: "Password Reset Successful - MeetAI",
         html: emailTemplate({ title, message}),
@@ -143,7 +143,7 @@ export const sendApplicationStatusUpdateEmail = async (to, jobSeekerName, jobTit
     const { title, message } = statusMessages[status] || statusMessages.pending;
 
     const mailOptions = {
-        from: `"MeetAI" <${process.env.GMAIL_USER}>`,
+        from: "MeetAI <no-reply@resend.dev>",
         to,
         subject: `${title} - ${companyName}`,
         html: emailTemplate({ title, message }),
