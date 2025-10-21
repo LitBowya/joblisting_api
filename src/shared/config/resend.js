@@ -3,38 +3,47 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Simulate a "transporter" object to keep your code consistent
 const transporter = {
   async sendMail({ to, subject, html, from }) {
     try {
-      const response = await resend.emails.send({
+      const { data, error } = await resend.emails.send({
         from: from || "MeetAI <no-reply@resend.dev>",
         to,
         subject,
         html,
       });
 
-      console.log("✅ Email sent successfully:", response.id);
-      return response;
-    } catch (error) {
-      console.error("❌ Error sending email:", error);
-      throw error;
+      if (error) {
+        console.error("❌ Email sending failed:", error);
+        throw error;
+      }
+
+      console.log("✅ Email sent successfully! ID:", data.id);
+      return data;
+    } catch (err) {
+      console.error("❌ Unexpected email error:", err);
+      throw err;
     }
   },
 };
 
-// Verify connection (optional, just for logging)
+// Optional verification at startup
 (async () => {
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "MeetAI <no-reply@resend.dev>",
-      to: "verify@resend.dev", // internal check email
+      to: "verify@resend.dev",
       subject: "Resend connection verified",
       html: "<p>Resend email service is working ✅</p>",
     });
-    console.log("✅ Resend API is ready to send emails");
+
+    if (error) {
+      console.error("❌ Resend verification failed:", error.message);
+    } else {
+      console.log("✅ Resend API is ready! Test ID:", data.id);
+    }
   } catch (error) {
-    console.error("❌ Resend verification failed:", error.message);
+    console.error("❌ Resend verification error:", error.message);
   }
 })();
 
